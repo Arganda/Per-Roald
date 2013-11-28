@@ -1,9 +1,9 @@
-from game2 import Scene, Death, Engine
+﻿from game2 import Scene, Death, Engine
 
 from sys import exit
 from random import randint
 
-#Det som er markert oransje, blir importert fra game2. 
+####Det som er markert oransje (kommentert vekk her), blir importert fra game2. 
 """class Scene(object):
 	
 	def enter(self):
@@ -35,7 +35,7 @@ class Death(Scene):
 		print Death.quips[randint(0, len(self.quips)-1)]
 		exit(1) 
 """		
-class RedFlats(Scene):
+class RedFlats(Scene):#Opening scene. 
 
 	def enter(self):
 		print "You're the only remaining Space Marine of the expedition crew sent to this planet."
@@ -65,7 +65,7 @@ class RedFlats(Scene):
 			print "The Arachnid is unbelievably fast, jumping from left to right, all the while closing up on you."
 			print "You start scoring hits with your bolter as the Arachnid comes closer; and suddenly it falls to the ground, "
 			print "most of its legs are gone. It screams in pain as it lies on the ground, its body spasming."
-			print "You take out your Chainsword and chop its head off in one clean cut."
+			print "You take out your chainsword and chop its head off in one clean cut."
 			return 'jungle'
 			
 		else:
@@ -120,10 +120,10 @@ class Drop_pod(Scene):
 			print "Gratz mate, you won!"
 			return 'finished'
 			
-class Map(object):
+class Map(object):#Fungerer sammen med Scene for å holde styr på scener i spillet. 
 
 	scenes = {
-		'RedFlats': RedFlats(),
+		'RedFlats': RedFlats(),#Scener i spillet.
 		'Jungle': Jungle(),
 		'Drop_pod': Drop_pod(),
 		'Death': Death()
@@ -138,6 +138,6 @@ class Map(object):
 	def opening_scene(self):
 			return self.next_scene(self.start_scene)
 			
-a_map = Map('RedFlats')
-a_game = Engine(a_map)
-a_game.play()
+a_map = Map('RedFlats')#Opening scene fastsatt. 
+a_game = Engine(a_map)#Engine er valgt som den klassen som kjører spillet. 
+a_game.play()#Kommandoen som kjører i gang spillet. 
